@@ -1,0 +1,29 @@
+{
+  "name": "serversafechat",
+  "version": "1.0.0",
+  "description": "Backend to safe chat",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Ing. Lesner Villega",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "connect-multiparty": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.7",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "socket.io": "^4.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
