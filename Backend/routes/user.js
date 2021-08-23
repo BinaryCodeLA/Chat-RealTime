@@ -8,7 +8,7 @@ const log = require('../log');
 
 
 // register
-router.post('/register', (req, res, next) => {
+router.post('/users/register', (req, res, next) => {
     let response = { success: false };
     if (!(req.body.password == req.body.confirmPass)) {
       let err = "The passwords don't match";
@@ -31,13 +31,14 @@ router.post('/register', (req, res, next) => {
             username: user.username,
           };
           console.log('[%s] registered successfuly', user.username);
+          res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
           res.json(response);
         }
       });
     }
   });
   
-  router.post('/authenticate', (req, res, next) => {
+  router.post('/users/authenticate', (req, res, next) => {
     let body = req.body;
     let response = { success: false };
   
@@ -61,31 +62,31 @@ router.post('/register', (req, res, next) => {
         response.msg = 'User authenticated successfuly';
   
         console.log('[%s] authenticated successfuly', user.username);
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
         res.json(response);
       }
     });
   });
   
   // profile
-  router.get(
-    '/profile',
-    passport.authenticate('jwt', { session: false }),
-    (req, res, next) => {
+  router.get('/users/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
       let response = { success: true };
       response.msg = 'Profile retrieved successfuly';
       response.user = req.user;
+      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
       res.json(response);
     }
   );
   
   // user list
-  router.get('/', (req, res, next) => {
+  router.get('/users', (req, res, next) => {
     User.getUsers()
       .then(users => {
         let response = {
           success: true,
           users: users,
         };
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
         return res.json(response);
       })
       .catch(err => {

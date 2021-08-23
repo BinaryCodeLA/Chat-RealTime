@@ -17,6 +17,10 @@ const messageRoutes = require('./routes/message');
 const app = express();
 
 //middlewares
+var corsOptions = {
+    origin: ['http://localhost:4200/','http://localhost:4040/mean-chat-app.io/'],
+    optionsSuccessStatus: 200
+  }
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());

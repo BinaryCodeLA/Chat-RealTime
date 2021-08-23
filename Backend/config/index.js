@@ -22,8 +22,8 @@ const config = {
     mongo: {
         host: MONGO_HOST,
         options: {
-            useNewUrlParser:true,
-            reconnectTries:Number.MAX_VALUE,
+            useNewUrlParser:true,           
+            useUnifiedTopology: true
         },
     },
     secret: SECRET,
